@@ -231,8 +231,8 @@ func TestPath(t *testing.T) {
 	path := "/usr/wkhtmltopdf/wkhtmltopdf"
 	SetPath(path)
 	defer SetPath("")
-	if GetPath() != path {
-		t.Errorf("Have path %q, want %q", GetPath(), path)
+	if GetWKHTMLToPDFPath() != path {
+		t.Errorf("Have path %q, want %q", GetWKHTMLToPDFPath(), path)
 	}
 }
 

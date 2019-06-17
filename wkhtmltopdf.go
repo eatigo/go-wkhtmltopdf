@@ -39,8 +39,8 @@ func SetPath(path string) {
 	binPath.Set(path)
 }
 
-// GetPath gets the path to wkhtmltopdf
-func GetPath() string {
+// GetWKHTMLToPDFPath gets the path to wkhtmltopdf
+func GetWKHTMLToPDFPath() string {
 	return binPath.Get()
 }
 
@@ -239,7 +239,7 @@ func (pdfg *PDFGenerator) WriteFile(filename string) error {
 //a running program once it has been found
 func (pdfg *PDFGenerator) findPath() error {
 	const exe = "wkhtmltopdf"
-	pdfg.binPath = GetPath()
+	pdfg.binPath = GetWKHTMLToPDFPath()
 	if pdfg.binPath != "" {
 		// wkhtmltopdf has already already found, return
 		return nil

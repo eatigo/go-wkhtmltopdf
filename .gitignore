@@ -3,3 +3,4 @@ testfiles/*.pdf
 .idea/
 *.exe
 wkhtmltopdf.exe.12.4
+main/
