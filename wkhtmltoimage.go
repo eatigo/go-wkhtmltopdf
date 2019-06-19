@@ -208,9 +208,8 @@ func cleanupOutput(img []byte, format string) []byte {
 
 func findPath() error {
 	const exe = "wkhtmltoimage"
-	binPath := GetWKHTMLToImagePath()
-	if binPath != "" {
-		// wkhtmltopdf has already already found, return
+	if GetWKHTMLToImagePath() != "" {
+		// wkhtmltoimage has already already found, return
 		return nil
 	}
 	exeDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
@@ -220,13 +219,11 @@ func findPath() error {
 	path, err := exec.LookPath(filepath.Join(exeDir, exe))
 	if err == nil && path != "" {
 		binImagePath.Set(path)
-		binPath = path
 		return nil
 	}
 	path, err = exec.LookPath(exe)
 	if err == nil && path != "" {
 		binImagePath.Set(path)
-		binPath = path
 		return nil
 	}
 	dir := os.Getenv("WKHTMLTOIMAGE_PATH")
@@ -236,7 +233,6 @@ func findPath() error {
 	path, err = exec.LookPath(filepath.Join(dir, exe))
 	if err == nil && path != "" {
 		binImagePath.Set(path)
-		binPath = path
 		return nil
 	}
 	return fmt.Errorf("%s not found", exe)
