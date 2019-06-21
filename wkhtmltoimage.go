@@ -76,6 +76,7 @@ func ImageFromJSON(jsonReader io.Reader) ([]byte, error) {
 		if p.Base64PageData == "" {
 			return GenerateImage(&ImageOptions{
 				Input: p.InputFile,
+				Format:"jpg",
 			})
 
 		}
@@ -86,6 +87,7 @@ func ImageFromJSON(jsonReader io.Reader) ([]byte, error) {
 		return GenerateImage(&ImageOptions{
 			Input: "-",
 			Html:  string(buf),
+			Format:"jpg",
 		})
 	}
 
